@@ -16,14 +16,14 @@ public abstract class ItemsCache<Item, ID> {
 
     public List<Item> getAllItems() {
         if (itemsList == null || itemsList.isEmpty() || isOutdated()) {
-            logDebug(String.format("*** Start Refreshing {} Cache ***", this.getClass().getSimpleName()));
+            logDebug(String.format("*** Start Refreshing %s Cache ***", this.getClass().getSimpleName()));
             itemsList = readAllItemsFromRepository();
-            logDebug(String.format("Cache size: {} elements", itemsList.size()));
+            logDebug(String.format("Cache size: %s elements", itemsList.size()));
             //Collections.reverse(itemsList);
             itemsMap = itemsList.stream().collect(Collectors.toMap(this::getItemId, entity -> entity));
             //logDebug(String.format("Cache map size: {}", itemsMap.size()));
             lastRefresh = new Date();
-            logDebug(String.format("*** Finished Refreshing Cache at {} ***", lastRefresh));
+            logDebug(String.format("*** Finished Refreshing Cache at %s ***", lastRefresh));
         }
         return itemsList;
     }
@@ -46,7 +46,7 @@ public abstract class ItemsCache<Item, ID> {
     private boolean isOutdated() {
         long diff = System.currentTimeMillis() - lastRefresh.getTime();
         var mins = TimeUnit.MILLISECONDS.toMinutes(diff);
-        logDebug(String.format("Last catalog refresh {} minutes ago", mins));
+        logDebug(String.format("Last catalog refresh %s minutes ago", mins));
         return mins > refreshIntervalMinutes;
     }
 
