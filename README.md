@@ -19,4 +19,5 @@ _______    1. Hit: Read from Cache   _________         External Source      ____
 1. Include as a dependency into your project (or just copy/paste source code)
 2. Define class that extends `xyz.wwcd.itemscache.ItemsCache`
 3. Declare as a static field in your domain service. 
+
 > To avoid redundant cache initializations by multiple instances of a domain service, check if cache have been already initialized.
