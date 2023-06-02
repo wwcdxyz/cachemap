@@ -1,6 +1,6 @@
-# In-memory cache for Items
+# Simple caching for Map 
 
-Simple in-memory lazy-cache implementation for caching items from external repositories.
+Simple in-memory lazy-cache implementation for caching Map data structures from external repositories.
 Useful for caching not-frequently changing data, when it is located in external data source.
 - Speedup response time - when original datasource has response time is slow.
 - Avoid redundant calls to external data source:
